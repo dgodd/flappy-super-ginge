@@ -3,7 +3,7 @@ class Pipe
 
 
   def initialize
-    @width = 55
+    @width = 70
     @height = 512/4 + rand(512/2)
     @x = WIDTH + @width
     @y = 0
@@ -16,14 +16,14 @@ class Pipe
     end
 
   def draw
-    Image.new('./assets/images/toppipe.png',
+    Image.new('./assets/images/top_bath.png',
     x: @x,
     y: @y,
     width: @width,
     height: @height,
     z: 10)
 
-    Image.new('./assets/images/bottompipe.png',
+    Image.new('./assets/images/bottom_bath.png',
     x: @x,
     y: @height + @open_gap,
     width: @width,

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 require 'ruby2d'
+require 'pry'
+
 require_relative 'bird'
 require_relative 'pipe'
 
@@ -11,7 +13,9 @@ set height: HEIGHT
 set title: 'flappy bird'
 
 def draw_game_over
-  Text.new("GAME OVER", x: WIDTH/2 - 100, y: HEIGHT/2, size: 30, color: 'red', z: 11)
+  txt = Text.new("I ROCK", y: HEIGHT/2, size: 30, color: 'red', z: 11)
+  txt.x = WIDTH/2 - txt.width/2
+  txt
 end
 
 def draw_background
