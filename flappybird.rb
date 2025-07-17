@@ -4,6 +4,7 @@ require 'pry'
 
 require_relative 'bird'
 require_relative 'pipe'
+require_relative 'bubble'
 
 HEIGHT = 640
 WIDTH = 420
@@ -35,6 +36,7 @@ pipes = []
 pipes << Pipe.new
 game_over = false # new game_over flag variable
 score = 0
+bubbles = []
 
 update do
   clear
@@ -46,6 +48,11 @@ update do
   pipes.each do |pipe|
     pipe.draw
     pipe.move
+  end
+
+  bubbles.each do |bubble|
+    bubble.draw
+    bubble.move
   end
 
   if game_over # 1
@@ -80,6 +87,7 @@ on :key_up do |event|
      bird.reset
      pipes.clear
      pipes << Pipe.new
+     bubbles = [Bubble.new(x: 15), Bubble.new(x: 40, velocity: 5)]
    end
 end
 
