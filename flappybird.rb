@@ -13,9 +13,13 @@ set height: HEIGHT
 set title: 'flappy bird'
 
 def draw_game_over
-  txt = Text.new("I ROCK", y: HEIGHT/2, size: 30, color: 'red', z: 11)
-  txt.x = WIDTH/2 - txt.width/2
-  txt
+  txt1 = Text.new("You made ginge have a bath", y: HEIGHT/2, size: 28, color: 'blue', z: 11)
+  txt1.x = WIDTH/2 - txt1.width/2
+  txt2 = Text.new("!YOU'RE A MONSTER!", y: HEIGHT/2 + 35, size: 36, color: 'red', z: 11)
+  txt2.x = WIDTH/2 - txt2.width/2
+  txt3 = Text.new("press 'r' to restart", y: HEIGHT/2 + 100, size: 20, color: 'black', z: 11)
+  txt3.x = WIDTH/2 - txt3.width/2
+  [txt1, txt2, txt3]
 end
 
 def draw_background
@@ -67,7 +71,16 @@ update do
 end
 
 on :key_up do |event|
-  bird.jump if event.key == 'space' && !game_over
+  bird.jump if event.key == 'space'  && !game_over
+
+   if  game_over && event.key == 'r'
+     # RESET
+     game_over = false
+     score = 0
+     bird.reset
+     pipes.clear
+     pipes << Pipe.new
+   end
 end
 
 show

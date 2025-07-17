@@ -5,10 +5,14 @@ class Bird
   attr_writer :gravity, :velocity
 
   def initialize
-    @x = 30
-    @y = HEIGHT / 2
     @width = 36 * 2
     @height = 33 * 2
+    reset
+  end
+
+  def reset
+    @x = 30
+    @y = HEIGHT / 2
     @gravity = 0.7
     @velocity = 0
   end
