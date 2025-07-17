@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Bird
+  attr_reader :x, :y
+  attr_writer :gravity, :velocity
+
   def initialize
     @x = 30
     @y = HEIGHT / 2
@@ -17,6 +20,10 @@ class Bird
   def move
     @velocity += @gravity
     @y = [@y + @velocity, 0].max
+  end
+
+  def felt?
+    @y >= HEIGHT
   end
 
   def jump

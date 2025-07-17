@@ -1,5 +1,6 @@
 class Pipe
-  attr_writer :scored
+  attr_writer :scored, :moving_distance
+
 
   def initialize
     @width = 55
@@ -9,6 +10,10 @@ class Pipe
     @open_gap = HEIGHT / 4
     @moving_distance = 5
   end
+
+  def hit?(x,y)
+      (@x..@x + @width).include?(x) && ((0..@height).include?(y) || (@height+@open_gap..HEIGHT).include?(y))
+    end
 
   def draw
     Image.new('./assets/images/toppipe.png',
